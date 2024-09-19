@@ -1,0 +1,11 @@
+function App() {
+  return (
+    <div className="min-h-screen bg-slate-700 text-white text-4xl flex justify-center gap-2 items-center">
+      <span className="animate-bounce">🏀</span>
+      <h1 className="animate-pulse">A Store Project</h1>
+      <span className="animate-bounce">🏀</span>
+    </div>
+  );
+}
+
+export default App;
