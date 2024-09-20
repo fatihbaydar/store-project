@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   return (
     <div className="loginDiv">
       <div className="h-[500px] w-11/12 sm:w-[475px] bg-white rounded-[20px] p-5 flex flex-col justify-center text-center ">
@@ -18,12 +20,28 @@ const Login = () => {
         </div>
         <form className="flex flex-col text-left p-3 gap-3">
           <div className="flex flex-col gap-2">
-            <label className="font-montserrat text-label text-labelColor hover:after:content-['aaa@bbb.com şeklinde giriniz'] hover:after:text-black hover:after:pl-3 hover:after:underline hover:cursor-pointer " htmlFor="email">Email</label>
-            <input className="login-input" type="email" placeholder="Enter your email" />
+            <label className="font-montserrat text-label text-labelColor hover:after:content-['aaa@bbb.com şeklinde giriniz'] hover:after:text-black hover:after:pl-3 hover:after:underline hover:cursor-pointer " 
+            htmlFor="email">
+              Email
+              </label>
+            <input 
+            className="login-input" 
+            type="email" 
+            placeholder="Enter your email" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="font-montserrat text-label text-labelColor hover:after:content-['aaa@bbb.com şeklinde giriniz'] hover:after:text-black hover:after:pl-3 hover:after:underline hover:cursor-pointer " htmlFor="password">Password</label>
-            <input className="login-input" type="password" id="password"  placeholder="Enter your password" />
+            <label className="font-montserrat text-label text-labelColor hover:after:content-['aaa@bbb.com şeklinde giriniz'] hover:after:text-black hover:after:pl-3 hover:after:underline hover:cursor-pointer " 
+            htmlFor="password">
+              Password
+              </label>
+            <input 
+            className="login-input" 
+            type="password" 
+            id="password"  
+            placeholder="Enter your password" 
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
         </form>
         <button className="bg-main h-[44px] font-montserrat text-label text-white uppercase hover:opacity-90 rounded-[4px] ">Sign in</button>
