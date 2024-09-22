@@ -1,9 +1,56 @@
-import React from 'react'
-
+import React, { useState } from "react";
+import { closeNavbar, openNavbar } from "../helper/icons";
+import { NavLink } from "react-router-dom";
+const navigation = [
+  {
+    title: "Home",
+    path: "/dashboard",
+  },
+  {
+    title: "Products",
+    path: "/dashboard/products",
+  },
+  {
+    title: "About",
+    path: "/dashboard/about",
+  },
+];
 const Navbar = () => {
+  const [show, setShow] = useState(false);
   return (
-    <div>Navbar</div>
-  )
-}
+    <nav className="bg-navbarColor md:text-sm">
+      <div className="gap-x-14 items-center max-w-screen mx-auto px-4 md:flex md:px-8">
+        <div className="flex items-center justify-between py-5">
+          <a href="" target="true" className="flex items-center">
+            <img
+              src="https://cdn.pixabay.com/photo/2023/03/14/00/12/store-7851105_1280.jpg"
+              alt=""
+              width={50}
+              height={50}
+            />
+            <span>Bizim Store</span>
+          </a>
+          <div className="md:hidden">
+            <button
+              onClick={() => setShow(!show)}
+              className="text-gray-500 hover:text-gray-800"
+            >
+              {show ? closeNavbar : openNavbar}
+            </button>
+          </div>
+        </div>
+        <div className= {`${show ? "flex flex-col" : "hidden"}`}>
+          <ul>
+            {navigation.map((item) => (
+              <li key={item.title}>
+                <NavLink to={item.path}>{item.title}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
