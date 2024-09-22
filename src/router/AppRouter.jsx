@@ -13,7 +13,7 @@ const AppRouter = () => {
     // <BrowserRouter>
 
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="" element={<PrivateRouter/>}>

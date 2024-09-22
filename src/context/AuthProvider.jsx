@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 // export const {Provider} = createContext() bu şekilde AuthContext içinden doğrudan dest edilerek gelebilir de.
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")) ||null);
   const navigate = useNavigate();
   console.log(user);
   const login = (info) => {
@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     sessionStorage.setItem("user", JSON.stringify(user));
-  }, []);
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
