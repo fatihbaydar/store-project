@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { closeNavbar, openNavbar } from "../helper/icons";
+import React, { useContext, useState } from "react";
+import { closeNavbar, logoutIcon, openNavbar } from "../helper/icons";
 import { NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 const navigation = [
   {
     title: "Home",
@@ -18,6 +19,7 @@ const navigation = [
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const location = useLocation()
+  const {logout} = useContext(AuthContext)
   return (
     <nav className="bg-navbarColor md:text-sm">
       <div className="gap-x-14 items-center max-w-screen mx-auto px-4 md:flex md:px-8">
@@ -44,10 +46,15 @@ const Navbar = () => {
           <ul className="md:flex md:space-x-6">
             {navigation.map((item) => (
               <li className="text-gray-700 font-medium flex justify-center" key={item.title}>
-                <NavLink className={`block hover:bg-main rounded-full py-2 px-4 hover:text-white ${location.pathname === item.path ? "underline scale-110" : ""} `} to={item.path}>{item.title}</NavLink>
+                <NavLink onClick={logout} className={`block hover:bg-main rounded-full py-2 px-4 hover:text-white ${location.pathname === item.path ? "underline scale-110" : ""} `} to={item.path}>{item.title}</NavLink>
               </li>
             ))}
           </ul>
+          <div className="flex-1 items-center justify-end gap-x-6 mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
+            <NavLink className="flex items-center justify-center gap-x-1 py-2 px-4 font-medium text-gray-700 hover:bg-main hover:text-white rounded-full md:inline-flex">
+              Logout {logoutIcon}
+            </NavLink>
+          </div>
         </div>
       </div>
     </nav>
