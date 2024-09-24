@@ -6,12 +6,14 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import AuthProvider from "./context/AuthProvider";
 import AppRouter from "./router/AppRouter";
-
+import ProductProvider from "./context/ProductProvider";
 
 function App() {
   return (
     <AuthProvider>
-      <AppRouter/>
+      <ProductProvider>
+        <AppRouter />
+      </ProductProvider>
     </AuthProvider>
 
     //* route yapısını router dosyasına taşıdık
@@ -24,7 +26,6 @@ function App() {
     //     <Route path="*" element={<NotFound />} />
     //   </Routes>
     // </BrowserRouter>
-
   );
 }
 
