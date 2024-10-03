@@ -18,8 +18,8 @@ const navigation = [
 ];
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const location = useLocation()
-  const {logout} = useContext(AuthContext)
+  const location = useLocation();
+  const { logout } = useContext(AuthContext);
   return (
     <nav className="bg-navbarColor md:text-sm">
       <div className="gap-x-14 items-center max-w-screen mx-auto px-4 md:flex md:px-8">
@@ -42,11 +42,27 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <div className= {`${show ? "flex flex-col pb-2" : "hidden"} md:flex md:flex-row flex-1 items-center` }>
+        <div
+          className={`${
+            show ? "flex flex-col pb-2" : "hidden"
+          } md:flex md:flex-row flex-1 items-center`}
+        >
           <ul className="md:flex md:space-x-6">
             {navigation.map((item) => (
-              <li className="text-gray-700 font-medium flex justify-center" key={item.title}>
-                <NavLink onClick={logout} className={`block hover:bg-main rounded-full py-2 px-4 hover:text-white ${location.pathname === item.path ? "underline scale-110" : ""} `} to={item.path}>{item.title}</NavLink>
+              <li
+                className="text-gray-700 font-medium flex justify-center"
+                key={item.title}
+                onClick={() => setShow(false)}
+              >
+                <NavLink
+                  onClick={logout}
+                  className={`block hover:bg-main rounded-full py-2 px-4 hover:text-white ${
+                    location.pathname === item.path ? "underline scale-110" : ""
+                  } `}
+                  to={item.path}
+                >
+                  {item.title}
+                </NavLink>
               </li>
             ))}
           </ul>
