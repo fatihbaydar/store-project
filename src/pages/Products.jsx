@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import Loading from "../components/Loading";
 import SearchInput from "../components/SearchInput";
 import { useProductsContext } from "../context/ProductProvider";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Products = () => {
   // const [products, setProducts] = useState([]);
@@ -46,6 +47,7 @@ const Products = () => {
       ) : (
         <h2 className="text-center text-3xl">No Products</h2>
       )}
+      <ScrollToTop/>
     </div>
   );
 };
